@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 
 <head>
     <title>Pokemon Sleep Grader</title>
@@ -11,9 +11,9 @@
     <script src="./data.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script>
-        console.log(Poke2Type)
-        var l_poke = Object.keys(Poke2Type)
-        l_poke.sort()
+        console.log(Specialist)
+        var l_specialist = Object.keys(Specialist)
+        l_specialist.sort()
         var l_nature = Object.keys(Nature2Score)
         l_nature.sort()
         var l_subskill = Object.keys(Subskill2Score)
@@ -30,9 +30,9 @@
 
 
         function calculate_score() {
-            let pokemon = document.getElementById("list_pokemons").value
+            let specialty = document.getElementById("list_specialties").value
             let nature = document.getElementById("list_natures").value
-            let idx = Poke2Type[pokemon]
+            let idx = Specialist[specialty]
 
             let explain_str = "Score in detail: "
 
@@ -71,7 +71,7 @@
                 }
             }
 
-            // get grade 
+            // get grade
             var grade_idx = 0
             for (let ii = 0; ii < Score2Grade.length; ii++) {
                 grade_idx = ii
@@ -90,11 +90,11 @@
         }
 
         function render() {
-            for (let ii = 0; ii < l_poke.length; ii++) {
+            for (let ii = 0; ii < l_specialist.length; ii++) {
                 var item = document.createElement("option")
-                item.text = l_poke[ii]
-                item.value = l_poke[ii]
-                document.getElementById("list_pokemons").appendChild(item)
+                item.text = l_specialist[ii]
+                item.value = l_specialist[ii]
+                document.getElementById("list_specialties").appendChild(item)
             }
             for (let ii = 0; ii < l_nature.length; ii++) {
                 var item = document.createElement("option")
@@ -113,6 +113,15 @@
             console.log("Render finished...")
         }
 
+        function light_dark_toggle() {
+            if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+                document.documentElement.setAttribute('data-bs-theme','light')
+            }
+            else {
+                document.documentElement.setAttribute('data-bs-theme','dark')
+            }
+        }
+
     </script>
 </head>
 
@@ -129,7 +138,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col text-center">
-                                    <strong>Pokemon:</strong>
+                                    <strong>Specialty:</strong>
                                 </div>
                                 <div class="col text-center">
                                     <strong>Nature:</strong>
@@ -138,7 +147,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <select id="list_pokemons" class="form-select">
+                                    <select id="list_specialties" class="form-select">
                                         <option disabled selected value> -- select one -- </option>
                                     </select>
                                 </div>
@@ -149,18 +158,6 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-2">
-                                    Nature:
-                                </div>
-                                <div class="col">
-                                    <select id="list_natures" class="form-select">
-                                        <option disabled selected value> -- select one -- </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li> -->
                         <li class="list-group-item">
                             <strong>Subskill:</strong>
                             <ul class="list-group">
@@ -265,12 +262,14 @@
                         1.5,1.25,1,0.75,0.5.</p>
                 </div>
                 <hr />
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary center" onclick="light_dark_toggle()">Toggle Light/Dark Mode</button>
+                </div>
+                <hr />
 
                 <footer class="text-center">
-                    Link to the <a href="https://github.com/chainreactionboom/pokemon-sleep-grader">Github</a> page and
-                    <a
-                        href="https://www.reddit.com/r/PokemonSleep/comments/16p04i7/yet_another_pokemon_sleep_grader/">Reddit</a>
-                    post
+                    Link to the <a href="https://github.com/w0jnar/pokemon-sleep-grader/tree/simplified">Github</a> page.
+                    Link to the <a href="https://github.com/chainreactionboom/pokemon-sleep-grader"> original Github</a> page.
                 </footer>
             </div>
         </div>

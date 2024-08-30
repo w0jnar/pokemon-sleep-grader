@@ -94,6 +94,12 @@ Poke2Type = {
     'Quaxly': PTYPE.Ingredient, 'Quaxwell': PTYPE.Ingredient, 'Quaquaval': PTYPE.Ingredient
 }
 
+Specialist = {
+    'Berry': PTYPE.Berry,
+    'Ingredient': PTYPE.Ingredient,
+    'Skill': PTYPE.Skill
+}
+
 Nature2Score = {
     'Hardy': [1.00, 1.00, 1.00], 'Lonely': [1.00, 1.00, 0.67], 'Brave': [1.67, 1.67, 1.67],
     'Adamant': [3.00, -0.17, 0.67], 'Naughty': [1.83, 1.67, -0.17],
